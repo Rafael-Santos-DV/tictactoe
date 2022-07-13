@@ -4,6 +4,8 @@ import logo from "../Assets/logo.svg";
 import { WinnerDesktop } from "../Components/WinnerDesktop/WinnerDesktop";
 import { Welcome } from "../Components/Welcome/Welcome";
 import { CardRegister } from "../Components/CardRegister/CardRegister";
+import { Player } from "../Components/Player/Player";
+import { CardTicTacToe } from "../Components/CardTicTacToe/CartTicTacToe";
 
 const Game: React.FC = () => {
   return (
@@ -12,12 +14,18 @@ const Game: React.FC = () => {
         <BoxImage>
           <img src={logo} alt="TicTacToe" />
         </BoxImage>
-        {/* <WinnerDesktop /> */}
-        <Welcome />
+        <WinnerDesktop />
+        {/* <Welcome /> */}
       </Header>
 
       <Main>
-        <CardRegister />
+        {/* <CardRegister /> */}
+
+        <Player />
+
+        <CardTicTacToe />
+
+        <Player />
       </Main>
     </Container>
   );

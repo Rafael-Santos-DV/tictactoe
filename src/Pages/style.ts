@@ -34,4 +34,6 @@ export const Main = styled.main`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 `;
