@@ -23,7 +23,7 @@ const Game: React.FC = () => {
 
         <Player />
 
-        <CardTicTacToe />
+        <CardTicTacToe className="card-tic-tac-toe" />
 
         <Player />
       </Main>

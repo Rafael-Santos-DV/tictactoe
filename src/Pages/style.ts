@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
-  gap: 40px;
+  gap: 20px;
 `;
 
 export const Header = styled.header`
@@ -36,4 +36,29 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+  }
+
+  @media screen and (max-width: 768px) {
+    & > div:nth-of-type(1) {
+      order: 1;
+    }
+
+    & > div:nth-of-type(2) {
+      order: 3;
+      margin: 0 auto;
+    }
+
+    & > div:nth-of-type(3) {
+      order: 2;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    gap: 2px;
+  }
 `;

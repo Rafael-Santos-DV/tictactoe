@@ -7,6 +7,24 @@ export const CardPlayer = styled.div`
   max-width: 260px;
   text-align: center;
   padding: 15px 18px;
+
+  @media screen and (max-width: 968px) {
+    padding: 8px 10px;
+    max-width: 220px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 15px 18px;
+    max-width: 200px;
+  }
+
+  @media screen and (max-width: 480px) {
+    max-width: 150px;
+  }
+
+  @media screen and (max-width: 380px) {
+    max-width: 45%;
+  }
 `;
 
 export const Box = styled.div`
@@ -38,6 +56,32 @@ export const Box = styled.div`
     font-size: 1.3rem;
     color: ${({ theme: { colors } }) => colors.colorYellow};
   }
+
+  @media screen and (max-width: 768px) {
+    img {
+      width: 40px;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    img {
+      width: 30px;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
+
+    img.profile {
+      transform: translateY(-40%);
+      width: 32px;
+    }
+
+    strong {
+      font-size: 1rem;
+    }
+    padding: 4px;
+  }
 `;
 
 export const Footer = styled.div`
@@ -58,5 +102,11 @@ export const Footer = styled.div`
 
   span.winners {
     color: ${({ theme: { colors } }) => colors.colorGreen};
+  }
+
+  @media screen and (max-width: 380px) {
+    span {
+      font-size: 0.8rem;
+    }
   }
 `;
