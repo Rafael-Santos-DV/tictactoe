@@ -2,7 +2,7 @@ type TypePlayer = {
   name: string;
   character: string;
   thumbnail: string;
-  symbol?: string;
+  symbol: string;
   id: number;
   winners?: number;
 };

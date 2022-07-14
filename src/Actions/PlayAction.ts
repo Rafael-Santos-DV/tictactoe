@@ -16,7 +16,7 @@ type ActionType = {
   payload: {
     id: number;
     button: string;
-    symbol: "x" | "o";
+    symbol: "null" | "x" | "o";
   };
 };
 

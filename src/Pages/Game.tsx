@@ -21,11 +21,7 @@ const Game: React.FC = () => {
         </BoxImage>
 
         {isRunning && (
-          <YourTime
-            name={playOne.name}
-            character={playOne.character}
-            id={rowID}
-          />
+          <YourTime name={playOne.name} character={playOne.character} id={1} />
         )}
 
         {!isRunning && <Welcome />}

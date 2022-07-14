@@ -44,7 +44,7 @@ interface CardType {
 
 export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
   const { buttons, yourTime } = useAppSelector((state) => state.Plays);
-  const { rowID, playOne, playTwo } = useAppSelector((state) => state.Players);
+  const { playOne, playTwo } = useAppSelector((state) => state.Players);
 
   const dispatch = useAppDispatch();
 
@@ -53,13 +53,23 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
   function handlePlay(button: string) {
     // first play for player one
     if (playOne.symbol === "x" && yourTime === 0) {
-      dispatch(plays({ button, symbol: "x", id: playOne.id }));
+      dispatch(plays({ button, symbol: "x", id: playTwo.id }));
       return;
     }
 
     // first play for player two
     if (playTwo.symbol === "x" && yourTime === 0) {
       dispatch(plays({ button, symbol: "x", id: playOne.id }));
+      return;
+    }
+
+    if (playOne.id === yourTime) {
+      dispatch(plays({ button, symbol: playOne.symbol, id: playTwo.id }));
+      return;
+    }
+
+    if (playTwo.id === yourTime) {
+      dispatch(plays({ button, symbol: playTwo.symbol, id: playOne.id }));
       return;
     }
   }
