@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   text-align: center;
   gap: 20px;
+  margin: 0 auto;
 
   h2 {
     font-size: 1.5rem;
@@ -52,5 +53,57 @@ export const HaveCharacter = styled.footer`
 
   p.character-failed {
     color: ${({ theme: { colors } }) => colors.colorRed};
+  }
+`;
+
+export const InitGame = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  span {
+    color: ${({ theme: { colors } }) => colors.colorYellow};
+    font-size: 1.2rem;
+  }
+
+  span.circle-animate {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: animate-circle 1s infinite alternate;
+    margin-left: 4px;
+  }
+
+  span:nth-of-type(2) {
+    background-color: ${({ theme: { colors } }) => colors.colorYellow};
+    animation-delay: 1s;
+  }
+
+  span:nth-of-type(3) {
+    background-color: ${({ theme: { colors } }) => colors.colorGreen};
+    animation-delay: 1.2s;
+  }
+
+  span:nth-of-type(4) {
+    background-color: ${({ theme: { colors } }) => colors.colorWhite};
+    animation-delay: 1.3s;
+  }
+
+  @keyframes animate-circle {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
 `;

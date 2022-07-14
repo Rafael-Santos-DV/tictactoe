@@ -40,10 +40,19 @@ export const Box = styled.div`
 
   img {
     width: 80px;
+
+    &.image-symbol-circle {
+      display: none;
+    }
+
+    &.image-symbol-iconX {
+      display: none;
+    }
   }
 
   img.profile {
     transform: translateY(-30%);
+    border-radius: 50%;
   }
 
   span,

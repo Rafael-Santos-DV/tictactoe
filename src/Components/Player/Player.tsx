@@ -3,19 +3,45 @@ import { Box, CardPlayer, Footer } from "./style";
 import iconCircle from "../../Assets/circle.svg";
 import iconX from "../../Assets/xicon.svg";
 
-export const Player: React.FC = () => {
+interface PlayerTypeProps {
+  thumbnail: string;
+  player: number;
+  name: string;
+  symbol: string;
+  winners: number;
+  className?: string;
+}
+
+export const Player: React.FC<PlayerTypeProps> = ({
+  name,
+  player,
+  symbol,
+  thumbnail,
+  winners,
+  className,
+}) => {
   return (
-    <CardPlayer>
+    <CardPlayer className={className}>
       <Box>
-        <img src={iconCircle} alt="Perfil" className="profile" />
-        <span>Player 1</span>
-        <strong>Leal</strong>
-        <img src={iconX} alt="Star" />
+        <img src={thumbnail} alt="Perfil" className="profile" />
+        <span>Player {player}</span>
+        <strong>{name}</strong>
+
+        <img
+          src={iconCircle}
+          alt="O"
+          className={symbol === "o" ? "image-symbol-circle" : ""}
+        />
+        <img
+          src={iconX}
+          alt="X"
+          className={symbol === "x" ? "image-symbol-iconX" : ""}
+        />
       </Box>
 
       <Footer>
         <span className="winners">Vitórias</span>
-        <span>2</span>
+        <span>{winners}</span>
       </Footer>
     </CardPlayer>
   );

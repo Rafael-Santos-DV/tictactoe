@@ -1,31 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { BoxImage, Container, Header, Main } from "./style";
 import logo from "../Assets/logo.svg";
-import { WinnerDesktop } from "../Components/WinnerDesktop/WinnerDesktop";
+import { YourTime } from "../Components/YourTime/YourTime";
 import { Welcome } from "../Components/Welcome/Welcome";
 import { CardRegister } from "../Components/CardRegister/CardRegister";
 import { Player } from "../Components/Player/Player";
 import { CardTicTacToe } from "../Components/CardTicTacToe/CartTicTacToe";
+import { useAppSelector } from "../hooks/hooks";
 
 const Game: React.FC = () => {
+  const { playOne, isRunning, playTwo, rowID } = useAppSelector(
+    (state) => state.Players
+  );
+
   return (
     <Container>
       <Header>
         <BoxImage>
           <img src={logo} alt="TicTacToe" />
         </BoxImage>
-        <WinnerDesktop />
-        {/* <Welcome /> */}
+
+        {isRunning && (
+          <YourTime
+            name={playOne.name}
+            character={playOne.character}
+            id={rowID}
+          />
+        )}
+
+        {!isRunning && <Welcome />}
       </Header>
 
       <Main>
-        {/* <CardRegister /> */}
+        {!isRunning && <CardRegister />}
 
-        <Player />
+        {isRunning && (
+          <Player
+            className="animate-show-profile"
+            name={playOne.name}
+            player={playOne.id}
+            winners={playOne.winners}
+            thumbnail={playOne.thumbnail}
+            symbol={playOne.symbol}
+          />
+        )}
 
-        <CardTicTacToe className="card-tic-tac-toe" />
+        {isRunning && (
+          <CardTicTacToe className="card-tic-tac-toe animate-card" />
+        )}
 
-        <Player />
+        {isRunning && (
+          <Player
+            className="animate-show-profile"
+            name={playTwo.name}
+            player={playTwo.id}
+            winners={playTwo.winners}
+            thumbnail={playTwo.thumbnail}
+            symbol={playTwo.symbol}
+          />
+        )}
       </Main>
     </Container>
   );
