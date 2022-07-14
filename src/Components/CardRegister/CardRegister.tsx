@@ -81,6 +81,7 @@ export const CardRegister: React.FC = () => {
           id,
           thumbnail: `${path}.${extension}`,
           symbol: "null",
+          plays: [],
         })
       );
       activeStatusResponse("sucess", 3000);

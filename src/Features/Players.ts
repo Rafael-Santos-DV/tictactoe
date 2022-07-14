@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Register from "../Actions/PlayersActions";
+import { Register, AddPlays } from "../Actions/PlayersActions";
 
 type TypePlayer = {
   name: string;
@@ -8,6 +8,7 @@ type TypePlayer = {
   symbol: "null" | "x" | "o";
   id: number;
   winners: number;
+  plays: Array<string>;
 };
 
 type StateType = {
@@ -27,6 +28,7 @@ const initialState: StateType = {
     symbol: "null",
     id: 1,
     winners: 0,
+    plays: [],
   },
   playTwo: {
     name: "",
@@ -35,6 +37,7 @@ const initialState: StateType = {
     symbol: "null",
     id: 2,
     winners: 0,
+    plays: [],
   },
 };
 
@@ -42,10 +45,11 @@ const Players = createSlice({
   name: "Players",
   initialState,
   reducers: {
+    AddPlays,
     Register,
   },
 });
 
-export const { Register: register } = Players.actions;
+export const { Register: register, AddPlays: addPlays } = Players.actions;
 
 export default Players.reducer;

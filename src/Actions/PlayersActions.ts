@@ -5,6 +5,7 @@ type TypePlayer = {
   symbol: string;
   id: number;
   winners?: number;
+  plays: Array<string>;
 };
 
 type StateType = {
@@ -19,7 +20,7 @@ type ActionType = {
   payload: TypePlayer;
 };
 
-export default function Register(state: StateType, action: ActionType) {
+export function Register(state: StateType, action: ActionType) {
   const symbol = ["x", "o"];
 
   const { playOne, playTwo, rowID } = state;
@@ -42,4 +43,25 @@ export default function Register(state: StateType, action: ActionType) {
 
   playOne.symbol = symbol[price_draw];
   playTwo.symbol = price_draw === 1 ? symbol[0] : symbol[1];
+}
+
+type TypeAddPlay = {
+  payload: {
+    id: number;
+    button: string;
+  };
+};
+
+export function AddPlays(state: StateType, action: TypeAddPlay) {
+  const { playOne, playTwo } = state;
+  const { id, button } = action.payload;
+
+  if (playOne.id === id) {
+    playOne.plays.push(button);
+    return;
+  }
+
+  if (playTwo.id === id) {
+    playTwo.plays.push(button);
+  }
 }
