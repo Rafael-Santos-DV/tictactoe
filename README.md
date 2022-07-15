@@ -7,7 +7,7 @@
 </div>
 
 <div  align="center">
-  <img src="/.github/assets/background1.png" alt="tic tac toe">
+  <img src="/.github/assets/background2.png" alt="tic tac toe">
 </div>
 
 ## instalação
