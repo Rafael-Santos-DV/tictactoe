@@ -20,9 +20,7 @@ const Game: React.FC = () => {
           <img src={logo} alt="TicTacToe" />
         </BoxImage>
 
-        {isRunning && (
-          <YourTime name={playOne.name} character={playOne.character} id={1} />
-        )}
+        {isRunning && <YourTime />}
 
         {!isRunning && <Welcome />}
       </Header>

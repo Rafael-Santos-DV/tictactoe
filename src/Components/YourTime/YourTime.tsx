@@ -1,18 +1,23 @@
 import React from "react";
+import { useAppSelector } from "../../hooks/hooks";
 import { BoxText } from "./style";
 
-export const YourTime: React.FC<{
-  name: string;
-  character: string;
-  id: number;
-}> = ({ name, character, id }) => {
+export const YourTime: React.FC = () => {
+  const { playOne, playTwo } = useAppSelector((state) => state.Players);
+
+  const { yourTime } = useAppSelector((state) => state.Plays);
+
   return (
-    <BoxText className={id === 1 ? "player-one" : "player-two"}>
+    <BoxText className={yourTime === 1 ? "player-one" : "player-two"}>
       <p>
-        É sua vez: <strong>{name}</strong>
+        É sua vez:
+        <strong>{yourTime === 1 ? playOne.name : playTwo.name}</strong>
       </p>
       <p>
-        Personagem: <strong>{character}</strong>
+        Personagem:
+        <strong>
+          {yourTime === 1 ? playOne.character : playTwo.character}
+        </strong>
       </p>
     </BoxText>
   );

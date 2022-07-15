@@ -5,6 +5,7 @@ export const CardPlayer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 260px;
+
   text-align: center;
   padding: 15px 18px;
 
@@ -37,6 +38,7 @@ export const Box = styled.div`
   border-radius: 35%;
   padding: 5px 20px 25px;
   color: ${({ theme: { colors } }) => colors.colorWhite};
+  height: 250px;
 
   img {
     width: 80px;
@@ -69,9 +71,20 @@ export const Box = styled.div`
   }
 
   @media screen and (max-width: 768px) {
+    max-height: 200px;
+    min-height: 200px;
+
     img {
       width: 40px;
     }
+
+    strong {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media screen and (max-width: 468px) {
+    padding: 0;
   }
 
   @media screen and (max-width: 380px) {
@@ -89,7 +102,7 @@ export const Box = styled.div`
     }
 
     strong {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     padding: 4px;
   }

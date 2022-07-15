@@ -8,12 +8,15 @@ export const BoxText = styled.div`
 
   &.player-one {
     strong {
+      padding-left: 10px;
+
       color: ${({ theme: { colors } }) => colors.colorGreen};
     }
   }
 
   &.player-two {
     strong {
+      padding-left: 10px;
       color: ${({ theme: { colors } }) => colors.colorPink};
     }
   }
