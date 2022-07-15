@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BoxImage, Container, Header, Main } from "./style";
 import logo from "../Assets/logo.svg";
 import { YourTime } from "../Components/YourTime/YourTime";
@@ -9,7 +9,7 @@ import { CardTicTacToe } from "../Components/CardTicTacToe/CartTicTacToe";
 import { useAppSelector } from "../hooks/hooks";
 
 const Game: React.FC = () => {
-  const { playOne, isRunning, playTwo, rowID } = useAppSelector(
+  const { playOne, isRunning, playTwo } = useAppSelector(
     (state) => state.Players
   );
 

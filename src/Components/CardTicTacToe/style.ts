@@ -88,7 +88,6 @@ export const ContainerWinner = styled.div<{ background: string }>`
   text-align: center;
   justify-content: center;
   align-items: center;
-  display: none;
 
   gap: 10px;
 
@@ -130,7 +129,7 @@ export const ContainerWinner = styled.div<{ background: string }>`
 `;
 
 type LineType = {
-  line:
+  line?:
     | "v-left"
     | "v-center"
     | "v-right"
@@ -158,7 +157,9 @@ export const ContainerLine = styled.div<LineType>`
     content: "";
     position: absolute;
     height: 2px;
-    border: 1px solid red;
+    border: 3px dotted ${({ theme: { colors } }) => colors.colorPink};
+    background-color: ${({ theme: { colors } }) => colors.colorMain};
+    border-radius: 10%;
     z-index: 99;
     width: calc(100% * ${Math.sqrt(2)});
 
@@ -244,7 +245,6 @@ export const ContainerLine = styled.div<LineType>`
         position: relative;
         grid-column: 1 / span 1;
         grid-row: 1 / span 3;
-        background-color: red;
         height: 100%;
       }
     `}
@@ -257,7 +257,6 @@ export const ContainerLine = styled.div<LineType>`
         position: relative;
         grid-column: 2 / 2;
         grid-row: 1 / span 3;
-        background-color: red;
         height: 100%;
       }
     `}
@@ -270,7 +269,6 @@ export const ContainerLine = styled.div<LineType>`
         position: relative;
         grid-column: 2 / 2;
         grid-row: 1 / span 3;
-        background-color: red;
         height: 100%;
       }
     `}
@@ -283,7 +281,6 @@ export const ContainerLine = styled.div<LineType>`
         position: relative;
         grid-column: 3 / 3;
         grid-row: 1 / span 3;
-        background-color: red;
         height: 100%;
       }
     `}

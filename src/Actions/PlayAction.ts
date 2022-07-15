@@ -28,3 +28,19 @@ export default function Play(state: StateType, action: ActionType) {
 
   state.yourTime = action.payload.id;
 }
+
+export function RestartPlay(state: StateType) {
+  state.buttons = {
+    one: "null",
+    two: "null",
+    three: "null",
+    four: "null",
+    five: "null",
+    six: "null",
+    seven: "null",
+    eight: "null",
+    nine: "null",
+  };
+
+  state.yourTime = 0;
+}

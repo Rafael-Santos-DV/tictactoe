@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Play from "../Actions/PlayAction";
+import Play, { RestartPlay } from "../Actions/PlayAction";
 
 type StateType = {
   yourTime: number;
@@ -34,9 +34,9 @@ const initialState = {
 export const Plays = createSlice({
   name: "Plays",
   initialState,
-  reducers: { Play },
+  reducers: { Play, RestartPlay },
 });
 
-export const { Play: plays } = Plays.actions;
+export const { Play: plays, RestartPlay: restartPlay } = Plays.actions;
 
 export default Plays.reducer;

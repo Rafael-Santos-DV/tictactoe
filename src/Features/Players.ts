@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Register, AddPlays } from "../Actions/PlayersActions";
+import {
+  Register,
+  AddPlays,
+  AddWinner,
+  RestartGame,
+} from "../Actions/PlayersActions";
 
 type TypePlayer = {
   name: string;
@@ -14,12 +19,26 @@ type TypePlayer = {
 type StateType = {
   isRunning: boolean;
   rowID: number;
+  hasWinner: boolean;
+  delayFinished: boolean;
+  winner: {
+    name: string;
+    id: number;
+    thumbnail: string;
+  };
   playOne: TypePlayer;
   playTwo: TypePlayer;
 };
 
 const initialState: StateType = {
   isRunning: false,
+  hasWinner: false,
+  delayFinished: false,
+  winner: {
+    name: "",
+    id: 0,
+    thumbnail: "",
+  },
   rowID: 1,
   playOne: {
     name: "",
@@ -47,9 +66,20 @@ const Players = createSlice({
   reducers: {
     AddPlays,
     Register,
+    AddWinner,
+    RestartGame,
+    activeDelay: (state) => {
+      state.delayFinished = true;
+    },
   },
 });
 
-export const { Register: register, AddPlays: addPlays } = Players.actions;
+export const {
+  Register: register,
+  AddPlays: addPlays,
+  AddWinner: addWinner,
+  RestartGame: restartGame,
+  activeDelay,
+} = Players.actions;
 
 export default Players.reducer;
