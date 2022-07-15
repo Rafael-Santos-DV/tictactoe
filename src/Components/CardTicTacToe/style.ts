@@ -14,30 +14,20 @@ export const Box = styled.div`
   }
 
   @media screen and (max-width: 380px) {
-    width: 330px;
-    height: 330px;
+    width: 200px;
+    height: 200px;
   }
 `;
 
 export const TicTacToe = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, calc(380px / 3));
-  grid-template-rows: repeat(3, calc(380px / 3));
+  grid-template-columns: repeat(3, calc(100% / 3));
+  grid-template-rows: repeat(3, calc(100% / 3));
   border-radius: 15px;
   overflow: hidden;
   border: 1px dotted ${({ theme: { colors } }) => colors.colorWhite};
   position: relative;
-
-  @media screen and (max-width: 968px) {
-    grid-template-columns: repeat(3, calc(350px / 3));
-    grid-template-rows: repeat(3, calc(350px / 3));
-  }
-
-  @media screen and (max-width: 380px) {
-    grid-template-columns: repeat(3, calc(100% / 3));
-    grid-template-rows: repeat(3, calc(100% / 3));
-  }
 `;
 
 export const Button = styled.button<{ gameQuatity: "x" | "o" | "null" }>`
