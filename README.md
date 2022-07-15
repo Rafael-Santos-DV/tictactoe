@@ -58,5 +58,10 @@ npm start
 - [x] thor
 - [x] x-men
 - [x] peter parker
+- [x] hulk
+- [x] thanos
+- [x] loki
+- [x] deadpool
+- [x] magneto
 
 APLICAÇÃO: [link](https://tictactoe-debex-group.vercel.app/)
