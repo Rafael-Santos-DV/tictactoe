@@ -89,7 +89,6 @@ export const CardRegister: React.FC = () => {
       setForm({ name: "", character: "" });
     } catch (err) {
       activeStatusResponse("erro", 3000);
-      alert(err);
     }
   }
 

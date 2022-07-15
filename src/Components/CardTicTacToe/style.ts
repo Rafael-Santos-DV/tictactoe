@@ -292,3 +292,47 @@ export const ContainerLine = styled.div<LineType>`
     }
   }
 `;
+
+export const ContainerDraw = styled.div<{ background: string }>`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-image: url(${(props) => props.background});
+
+  div {
+    display: flex;
+    gap: 30px;
+
+    img {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+  }
+
+  span {
+    color: ${({ theme: { colors } }) => colors.colorYellow};
+    font-size: 1rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    span {
+      color: ${({ theme: { colors } }) => colors.colorWhite};
+      font-size: 0.8rem;
+    }
+  }
+`;

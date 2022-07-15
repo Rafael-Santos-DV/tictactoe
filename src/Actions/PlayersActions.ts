@@ -12,6 +12,7 @@ type StateType = {
   rowID: number;
   hasWinner: boolean;
   delayFinished: boolean;
+  hasDraw: boolean;
   winner: {
     name: string;
     id: number;
@@ -119,4 +120,8 @@ export function RestartGame(state: StateType) {
 
   state.hasWinner = false;
   state.delayFinished = false;
+  state.hasDraw = false;
+
+  playTwo.plays = [];
+  playOne.plays = [];
 }

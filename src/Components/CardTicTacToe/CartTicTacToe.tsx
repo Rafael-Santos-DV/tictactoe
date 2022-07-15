@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
+  ContainerDraw,
   ContainerLine,
   ContainerWinner,
   TicTacToe,
@@ -13,7 +14,12 @@ import restart from "../../Assets/restart.svg";
 import winnerImage from "../../Assets/winner.jpg";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { plays, restartPlay } from "../../Features/Plays";
-import { addPlays, addWinner, restartGame } from "../../Features/Players";
+import {
+  addPlays,
+  addWinner,
+  restartGame,
+  createDraw,
+} from "../../Features/Players";
 import { Delay } from "../../Sagas/sagas";
 import { sagaMiddeware } from "../../Store/Store";
 
@@ -57,9 +63,8 @@ interface CardType {
 
 export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
   const { buttons, yourTime } = useAppSelector((state) => state.Plays);
-  const { playOne, playTwo, hasWinner, winner, delayFinished } = useAppSelector(
-    (state) => state.Players
-  );
+  const { playOne, playTwo, hasWinner, winner, delayFinished, hasDraw } =
+    useAppSelector((state) => state.Players);
 
   const [getPosition, setPosition] = useState<LineType>();
 
@@ -162,6 +167,10 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
       dispatch(plays({ button, symbol: playOne.symbol, id: playTwo.id }));
       handleVerifyWinner(playOne, button);
 
+      // teste
+      if ([...playOne.plays, ...playTwo.plays, button].length === 9) {
+        dispatch(createDraw());
+      }
       return;
     }
 
@@ -172,6 +181,11 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
 
       handleVerifyWinner(playTwo, button);
 
+      // teste
+      if ([...playOne.plays, ...playTwo.plays, button].length === 9) {
+        console.log([...playOne.plays, ...playTwo.plays, button].length);
+        dispatch(createDraw());
+      }
       return;
     }
   }
@@ -207,6 +221,22 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
               <span>Nova Partida</span>
             </button>
           </ContainerWinner>
+        )}
+
+        {hasDraw && (
+          <ContainerDraw background={winnerImage}>
+            <div>
+              <img src={playOne.thumbnail} alt="Profile" className="profile" />
+              <img src={playTwo.thumbnail} alt="Profile" className="profile" />
+            </div>
+
+            <span>Deu empate!</span>
+
+            <button onClick={() => handleResetGame()}>
+              <img src={restart} alt="Restart" />
+              <span>Nova Partida</span>
+            </button>
+          </ContainerDraw>
         )}
       </TicTacToe>
     </Box>

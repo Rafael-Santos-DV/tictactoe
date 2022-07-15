@@ -21,6 +21,7 @@ type StateType = {
   rowID: number;
   hasWinner: boolean;
   delayFinished: boolean;
+  hasDraw: boolean;
   winner: {
     name: string;
     id: number;
@@ -33,6 +34,7 @@ type StateType = {
 const initialState: StateType = {
   isRunning: false,
   hasWinner: false,
+  hasDraw: false,
   delayFinished: false,
   winner: {
     name: "",
@@ -71,6 +73,9 @@ const Players = createSlice({
     activeDelay: (state) => {
       state.delayFinished = true;
     },
+    createDraw: (state) => {
+      state.hasDraw = true;
+    },
   },
 });
 
@@ -80,6 +85,7 @@ export const {
   AddWinner: addWinner,
   RestartGame: restartGame,
   activeDelay,
+  createDraw,
 } = Players.actions;
 
 export default Players.reducer;
