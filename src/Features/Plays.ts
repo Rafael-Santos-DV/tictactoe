@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import Play, { RestartPlay } from "../Actions/PlayAction";
 
 type StateType = {
-  yourTime: number;
   buttons: {
     one: "null" | "x" | "o";
     two: "null" | "x" | "o";
@@ -17,7 +16,6 @@ type StateType = {
 };
 
 const initialState = {
-  yourTime: 0,
   buttons: {
     one: "null",
     two: "null",
@@ -34,7 +32,10 @@ const initialState = {
 export const Plays = createSlice({
   name: "Plays",
   initialState,
-  reducers: { Play, RestartPlay },
+  reducers: {
+    Play,
+    RestartPlay,
+  },
 });
 
 export const { Play: plays, RestartPlay: restartPlay } = Plays.actions;

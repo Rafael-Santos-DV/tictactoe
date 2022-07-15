@@ -3,22 +3,28 @@ import { useAppSelector } from "../../hooks/hooks";
 import { BoxText } from "./style";
 
 export const YourTime: React.FC = () => {
-  const { playOne, playTwo } = useAppSelector((state) => state.Players);
-
-  const { yourTime } = useAppSelector((state) => state.Plays);
+  const { playOne, playTwo, yourTime } = useAppSelector(
+    (state) => state.Players
+  );
 
   return (
-    <BoxText className={yourTime === 1 ? "player-one" : "player-two"}>
-      <p>
-        É sua vez:
-        <strong>{yourTime === 1 ? playOne.name : playTwo.name}</strong>
-      </p>
-      <p>
-        Personagem:
-        <strong>
-          {yourTime === 1 ? playOne.character : playTwo.character}
-        </strong>
-      </p>
+    <BoxText className={playOne.id === yourTime ? "player-one" : "player-two"}>
+      {yourTime === 0 ? (
+        <div>Esperando próxima partida!</div>
+      ) : (
+        <>
+          <p>
+            É sua vez:
+            <strong>{yourTime === 1 ? playOne.name : playTwo.name}</strong>
+          </p>
+          <p>
+            Personagem:
+            <strong>
+              {yourTime === 1 ? playOne.character : playTwo.character}
+            </strong>
+          </p>
+        </>
+      )}
     </BoxText>
   );
 };

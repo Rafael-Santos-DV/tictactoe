@@ -22,6 +22,7 @@ type StateType = {
   hasWinner: boolean;
   delayFinished: boolean;
   hasDraw: boolean;
+  yourTime: number;
   winner: {
     name: string;
     id: number;
@@ -35,6 +36,7 @@ const initialState: StateType = {
   isRunning: false,
   hasWinner: false,
   hasDraw: false,
+  yourTime: 0,
   delayFinished: false,
   winner: {
     name: "",
@@ -75,6 +77,7 @@ const Players = createSlice({
     },
     createDraw: (state) => {
       state.hasDraw = true;
+      state.yourTime = 0;
     },
   },
 });

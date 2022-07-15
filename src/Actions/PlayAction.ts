@@ -1,5 +1,4 @@
 type StateType = {
-  yourTime: number;
   buttons: {
     one: "null" | "x" | "o";
     two: "null" | "x" | "o";
@@ -25,8 +24,6 @@ export default function Play(state: StateType, action: ActionType) {
     ...state.buttons,
     [action.payload.button]: action.payload.symbol,
   };
-
-  state.yourTime = action.payload.id;
 }
 
 export function RestartPlay(state: StateType) {
@@ -41,6 +38,4 @@ export function RestartPlay(state: StateType) {
     eight: "null",
     nine: "null",
   };
-
-  state.yourTime = 0;
 }

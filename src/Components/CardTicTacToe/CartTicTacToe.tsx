@@ -14,6 +14,7 @@ import restart from "../../Assets/restart.svg";
 import winnerImage from "../../Assets/winner.jpg";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { plays, restartPlay } from "../../Features/Plays";
+
 import {
   addPlays,
   addWinner,
@@ -62,9 +63,16 @@ interface CardType {
 }
 
 export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
-  const { buttons, yourTime } = useAppSelector((state) => state.Plays);
-  const { playOne, playTwo, hasWinner, winner, delayFinished, hasDraw } =
-    useAppSelector((state) => state.Players);
+  const { buttons } = useAppSelector((state) => state.Plays);
+  const {
+    playOne,
+    playTwo,
+    hasWinner,
+    winner,
+    delayFinished,
+    hasDraw,
+    yourTime,
+  } = useAppSelector((state) => state.Players);
 
   const [getPosition, setPosition] = useState<LineType>();
 
@@ -128,6 +136,7 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
           }
           case 6: {
             setPosition("d-bottom-right");
+            sagaMiddeware.run(Delay);
             break;
           }
           case 7: {
@@ -183,7 +192,6 @@ export const CardTicTacToe: React.FC<CardType> = ({ className }) => {
 
       // teste
       if ([...playOne.plays, ...playTwo.plays, button].length === 9) {
-        console.log([...playOne.plays, ...playTwo.plays, button].length);
         dispatch(createDraw());
       }
       return;

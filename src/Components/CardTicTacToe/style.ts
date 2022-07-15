@@ -325,4 +325,17 @@ export const ContainerDraw = styled.div<{ background: string }>`
       font-size: 0.8rem;
     }
   }
+
+  @media screen and (max-width: 380px) {
+    div {
+      img {
+        max-width: 40px;
+      }
+    }
+    button {
+      img {
+        max-width: 50px;
+      }
+    }
+  }
 `;

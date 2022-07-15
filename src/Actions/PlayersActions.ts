@@ -11,6 +11,7 @@ type TypePlayer = {
 type StateType = {
   rowID: number;
   hasWinner: boolean;
+  yourTime: number;
   delayFinished: boolean;
   hasDraw: boolean;
   winner: {
@@ -47,10 +48,12 @@ export function Register(state: StateType, action: ActionType) {
   playTwo.thumbnail = thumbnail;
   state.isRunning = true;
 
-  const price_draw = Math.floor(Math.random() * 2); // 0 or 1
+  const prize_draw = Math.floor(Math.random() * 2); // 0 or 1
 
-  playOne.symbol = symbol[price_draw];
-  playTwo.symbol = price_draw === 1 ? symbol[0] : symbol[1];
+  playOne.symbol = symbol[prize_draw];
+  playTwo.symbol = prize_draw === 1 ? symbol[0] : symbol[1];
+
+  state.yourTime = playOne.symbol === "x" ? 1 : 2;
 }
 
 type TypeAddPlay = {
@@ -66,11 +69,13 @@ export function AddPlays(state: StateType, action: TypeAddPlay) {
 
   if (playOne.id === id) {
     playOne.plays.push(button);
+    state.yourTime = playTwo.id;
     return;
   }
 
   if (playTwo.id === id) {
     playTwo.plays.push(button);
+    state.yourTime = playOne.id;
   }
 }
 
@@ -85,6 +90,7 @@ export function AddWinner(state: StateType, action: TypeActionWinner) {
   const { playOne, playTwo, winner } = state;
 
   state.hasWinner = true;
+  state.yourTime = 0;
 
   if (id === playOne.id) {
     playOne.winners += 1;
@@ -107,16 +113,10 @@ export function AddWinner(state: StateType, action: TypeActionWinner) {
 
 export function RestartGame(state: StateType) {
   const { winner, playOne, playTwo } = state;
-  const symbol = ["x", "o"];
 
   winner.id = 0;
   winner.name = "";
   winner.thumbnail = "";
-
-  const price_draw = Math.floor(Math.random() * 2); // 0 or 1
-
-  playOne.symbol = symbol[price_draw];
-  playTwo.symbol = price_draw === 1 ? symbol[0] : symbol[1];
 
   state.hasWinner = false;
   state.delayFinished = false;
@@ -124,4 +124,13 @@ export function RestartGame(state: StateType) {
 
   playTwo.plays = [];
   playOne.plays = [];
+
+  const symbol = ["x", "o"];
+
+  const prize_draw = Math.floor(Math.random() * 2); // 0 or 1
+
+  playOne.symbol = symbol[prize_draw];
+  playTwo.symbol = prize_draw === 1 ? symbol[0] : symbol[1];
+
+  state.yourTime = playOne.symbol === "x" ? 1 : 2;
 }

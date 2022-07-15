@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const BoxText = styled.div`
+  > div {
+    color: ${({ theme: { colors } }) => colors.colorWhite};
+    font-size: 1rem;
+  }
   p {
     font-size: 1.2rem;
     color: ${({ theme: { colors } }) => colors.colorYellow};
