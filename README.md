@@ -7,7 +7,7 @@
 </div>
 
 <div  align="center">
-  <img src="/.github/assets/background1.png" alt="tic tac toe">
+  <img src="/.github/assets/background2.png" alt="tic tac toe">
 </div>
 
 ## instalação
@@ -24,7 +24,7 @@ Acessar pasta do projeto
 
 ```bash
 
-cd tictactoe-debex-grou
+cd tictactoe-debex-group
 
 ```
 
@@ -58,5 +58,10 @@ npm start
 - [x] thor
 - [x] x-men
 - [x] peter parker
+- [x] hulk
+- [x] thanos
+- [x] loki
+- [x] deadpool
+- [x] magneto
 
 APLICAÇÃO: [link](https://tictactoe-debex-group.vercel.app/)
