@@ -24,7 +24,7 @@ Acessar pasta do projeto
 
 ```bash
 
-cd tictactoe-debex-grou
+cd tictactoe-debex-group
 
 ```
 
