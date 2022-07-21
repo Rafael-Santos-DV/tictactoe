@@ -63,5 +63,6 @@ npm start
 - [x] loki
 - [x] deadpool
 - [x] magneto
+- [x] Iron man
 
 APLICAÇÃO: [link](https://tictactoe-debex-group.vercel.app/)
