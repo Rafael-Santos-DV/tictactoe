@@ -16,7 +16,7 @@ Clonar projeto
 
 ```bash
 
-git clone https://github.com/Rafael-Santos-DV/tictactoe-debex-group.git
+git clone https://github.com/Rafael-Santos-DV/tictactoe.git
 
 ```
 
